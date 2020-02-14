@@ -29,6 +29,9 @@ class MyTestCase(unittest.TestCase):
     def test_character_atom(self):
         self.assertEqual(['character'], tokenize("character"))
 
+    def test_space_end_and_beginning(self):
+        self.assertEqual(['(', '+', '2', '2', ')'], tokenize(" (+ 2 2) "))
+
     def test_complex_code(self):
         self.assertEqual(
             ['(', 'defun', '(', 'double', 'x', ')', '(', '+', 'x', 'x', ')', ')'],
