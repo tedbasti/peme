@@ -13,8 +13,7 @@ def old_tokenize(code):
         "open brackets": re.compile('\('),
         "close brackets": re.compile('\)'),
         "whitespace": re.compile('\s+'),
-        "alpha": re.compile('[a-zA-Z+-\/\*][^ \t\r\n\)\(]*'),
-        "digit": re.compile('[0-9]*')
+        "nowhitespace": re.compile('[^\s\(\)]+')
     }
 
     while pos < len(code):
