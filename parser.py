@@ -8,21 +8,22 @@ class Element:
         self.dtype = dtype
         self.value = value
 
-    #Equals to check with == (e.q. for the tests)
+    # Equals to check with == (e.q. for the tests)
     def __eq__(self, other):
         return type(other) == Element \
                and self.dtype == other.dtype \
                and self.value == other.value
 
-    #not equals
+    # not equals
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    #toString() method
+    # toString() method
     def __str__(self):
-        return "dtype: " + self.dtype + ", value " + self.value
+        #return "(dtype: " + str(self.dtype) + ", value " + self.value + ")"
+        return self.value
 
-    #Seems like within lists this is called instead of __str__()
+    # Seems like within lists this is called instead of __str__()
     def __repr__(self):
         return self.__str__()
 
