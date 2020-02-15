@@ -44,8 +44,7 @@ def parser(tokens, pos=0, depth=0):
             subresult, pos = parser(tokens, pos + 1, depth+1)
             result.append(subresult)
         elif tokens[pos] == ")":
-            pos+=1
-            if depth == 0 and pos < len(tokens):
+            if depth == 0:
                 raise ParserException("To many closed brackets")
             return result, pos + 1
         else: #This is a 'real' object for sure!
@@ -54,4 +53,4 @@ def parser(tokens, pos=0, depth=0):
             #atom, a string, a number or whatever is possible
             result.append(Element(TYPES.ATOM, tokens[pos]))
             pos += 1
-    return result
+    return result, pos
