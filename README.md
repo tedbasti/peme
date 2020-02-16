@@ -4,14 +4,15 @@ It is just developed for and not gonna be serious stuff.
 
 # Steps to be done
 
-## Tokenizer
-The tokenizer takes a scheme string and convert it to an array.
-This is done with alot of regex
+## Lexer
+The lexer(tokenizer) takes a scheme string and convert it to an array.
+It finds out that 123 is a number and "b c d" is a string.
+A code like '(a "b c d" 123)' will be
+  --> [("(", ""), ("identifier", "a"), ("string", "b c d"), ("number", "123"), (")", "")].
 
 ## Parser
 The parser will find out what the token is about. 
-E.g. 100 is a number, "abcd" is a string and + is an atom (or how ever im gonna call it).
-Furthermore it will rebuild the bracket structure with encapsulated (python) lists.
+It will rebuild the bracket structure with encapsulated (python) lists.
 
 ## Eval
 Now the magic comes to place.
