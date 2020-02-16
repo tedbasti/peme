@@ -9,8 +9,10 @@ class Lexer:
         self.valueNeeded = valueNeeded # Is the value of the token needed?
         self.skip = skip # Skip the fields (whitespaces are skipped
 
+
 class LexerException(Exception):
     pass
+
 
 def tokenize(code):
     result = []
