@@ -1,6 +1,7 @@
 import unittest
 from tokenizer import *
 
+
 class MyTestCase(unittest.TestCase):
     def test_empty_line(self):
         self.assertEqual([], tokenize(""))
