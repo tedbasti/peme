@@ -1,5 +1,5 @@
 import unittest
-from tokenizer import tokenize
+from tokenizer import *
 
 class MyTestCase(unittest.TestCase):
     def test_empty_line(self):
@@ -51,6 +51,13 @@ class MyTestCase(unittest.TestCase):
     def test_number_or_identifier(self):
         self.assertEqual([("identifier", "abc123"), ("number", "123")],
                          tokenize("abc123 123"))
+
+    def test_identifier_with_dots(self):
+        self.assertEqual([("identifier", "abc.")], tokenize("abc."))
+
+    def test_unknown_symbol(self):
+        with self.assertRaises(LexerException):
+            tokenize("!")
 
 if __name__ == '__main__':
     unittest.main()

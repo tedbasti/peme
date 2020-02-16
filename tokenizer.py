@@ -10,6 +10,8 @@ class Lexer:
         self.valueNeeded = valueNeeded # Is the value of the token needed?
         self.skip = skip # Skip the fields (whitespaces are skipped
 
+class LexerException(Exception):
+    pass
 
 def tokenize(code):
     result = []
@@ -19,7 +21,7 @@ def tokenize(code):
         Lexer(re.compile('\)'), ")", False), # Closing brackets
         Lexer(re.compile('".*"'), "string"), # Strings "a b c d"
         Lexer(re.compile('\s+'), "whitespace", False, True), # Skip whitespaces
-        Lexer(re.compile('[a-zA-Z\+\-\/\*][a-zA-Z0-9\+\-\/\*]*'), "identifier"), # identifier
+        Lexer(re.compile('[a-zA-Z\+\-\/\*.][a-zA-Z0-9\+\-\/\*.]*'), "identifier"), # identifier
         Lexer(re.compile('[0-9.]+'), "number"),  # numbers
     ]
 
@@ -41,11 +43,5 @@ def tokenize(code):
         # When the position doesnt change,
         # no regex matches.
         if posbefore == pos:
-            print("Invalid Symbol beginning at:")
-            print(code[pos:])
-            print("At position:")
-            print(pos)
-            print("Code:")
-            print(code)
-            sys.exit(1)
+            raise LexerException("Invalid symbol at position " + str(pos) + " Symbol: '" + code[pos] + "'")
     return result
