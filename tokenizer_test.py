@@ -35,7 +35,9 @@ class MyTestCase(unittest.TestCase):
 
     def test_complex_code(self):
         self.assertEqual(
-            ['(', 'defun', '(', 'double', 'x', ')', '(', '+', 'x', 'x', ')', ')'],
+            [("(", ""), ("identifier", "defun"), ("(", ""), ("identifier", "double"), ("identifier", "x"),
+             (")", ""), ("(", ""), ("identifier", "+"), ("identifier", "x"), ("identifier", "x"), (")", ""),
+             (")", "")],
             tokenize("(defun (double x) (+ x x))"))
 
 if __name__ == '__main__':
