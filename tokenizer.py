@@ -2,6 +2,7 @@ from __future__ import print_function
 import re
 import sys
 
+
 class Lexer:
     def __init__(self, regex, name, valueNeeded=True, skip=False):
         self.regex = regex # the regex to be used
@@ -29,8 +30,11 @@ def tokenize(code):
             if r:
                 if not l.skip:
                     value = ""
-                    if (l.valueNeeded):
+                    if l.valueNeeded:
                         value = r.group()
+                    #This is ugly, but gets rid of the ""
+                    if l.name == "string":
+                        value = r.group()[1:-1]
                     result.append((l.name, value))
                 pos += r.end()
                 break
