@@ -1,6 +1,6 @@
 # peme
 This will be a small lisp/scheme interpreter written in python.
-It is just developed for and not gonna be serious stuff.
+It is just developed for fun and not gonna be serious stuff.
 
 # Steps to be done
 
