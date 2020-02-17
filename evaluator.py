@@ -21,12 +21,19 @@ class Functions:
             result += x
         return result
 
+    def minus(params):
+        result = params[0]
+        for x in params[1:]:
+            result -= x
+        return result
+
 
 func = Functions
 
 
 globalEnv = {
-    '+': func.plus
+    '+': func.plus,
+    '-': func.minus,
 }
 
 
