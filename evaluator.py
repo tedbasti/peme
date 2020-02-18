@@ -22,7 +22,10 @@ class Functions:
         return result
 
     def minus(params):
-        result = params[0]
+        try:
+            result = params[0]
+        except IndexError:
+            return 0
         for x in params[1:]:
             result -= x
         return result
