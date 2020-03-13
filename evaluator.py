@@ -53,7 +53,14 @@ def execute(syntaxtree):
         elif isinstance(x, list):
             if x[0][0] != "identifier":
                 raise EvaluationException("Identifiers must be used for procedures.")
-            function = getIdentifier(x[0][1])
-            params = execute(x[1:])
-            result.append(function(params))
+            functionName = x[0][1]
+            #define is something special!
+            if functionName == "define":
+                if x[1][0] != "identifier":
+                    raise EvaluationException("define is only usable with identifier as parameter")
+                globalEnv[x[1][1]] = execute([x[2]])[0] #TODO: Do I have to make a list of x[2]?
+            else:
+                function = getIdentifier(functionName)
+                params = execute(x[1:])
+                result.append(function(params))
     return result

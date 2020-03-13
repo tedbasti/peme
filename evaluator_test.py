@@ -25,6 +25,11 @@ class MyTestCase(unittest.TestCase):
     def test_evaluate_minus_multiple(self):
         self.assertEqual(8, execute([[("identifier", "-"), ("number", "14"), [("identifier", "+"), ("number", "2"), ("number", "4")]]])[0])
 
+    def test_evaluate_define(self):
+        self.assertEqual([], execute([[("identifier", "define"), ("identifier", "x"), ("number", "2")]]))
+
+    def test_evaluate_define_and_usage(self):
+        self.assertEqual(2, execute([[("identifier", "define"), ("identifier", "x"), ("number", "2")], ("identifier", "x")])[0])
 
 
 
