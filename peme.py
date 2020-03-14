@@ -20,7 +20,7 @@ def main():
             for r in result:
                 print(r)
         except KeyboardInterrupt:
-            print("\nInterpreter wurde unerwartet beendet")
+            print("\nInterpreter exited due to Keyboard interrupt")
             exit(0)
 
 
