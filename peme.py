@@ -14,10 +14,14 @@ def execute(code):
 
 def main():
     while True:
-        line = input("> ")
-        result = execute(line)
-        for r in result:
-            print(r)
+        try:
+            line = input("> ")
+            result = execute(line)
+            for r in result:
+                print(r)
+        except KeyboardInterrupt:
+            print("\nInterpreter wurde unerwartet beendet")
+            exit(0)
 
 
 if __name__ == "__main__":
